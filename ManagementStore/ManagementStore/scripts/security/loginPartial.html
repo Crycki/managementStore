@@ -1,9 +1,11 @@
-﻿<div>
+﻿<div id="login">
+    <h1>Log in</h1>
+    <div id="triangle"></div>
     <form data-ng-submit="login()">
-        <label>Username</label>
-        <input type="text" data-ng-model="username" placeholder="Username">
-        <label>Password</label>
-        <input type="password" data-ng-model="password" placeholder="Password">
-        <button type="submit">Submit</button>
+        <i class="fa fa-user login-fa fa-2x"></i>
+        <input type="email" data-ng-model="username" placeholder="Username" />
+        <i class="fa fa-lock fa-2x login-fa"></i>
+        <input type="password" data-ng-model="password" placeholder="Password" />
+        <button type="submit">Log in <i class="fa fa-"></i></button>
     </form>
 </div>
