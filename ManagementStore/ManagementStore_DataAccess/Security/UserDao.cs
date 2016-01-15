@@ -1,4 +1,5 @@
-﻿using ManagementStore_DataModel.Security;
+﻿using ManagementStore_DataAccess.Utils;
+using ManagementStore_DataModel.Security;
 using System;
 using System.Data;
 
@@ -13,13 +14,14 @@ namespace ManagementStore_DataAccess.Security
 
     public class UserDao : IUserDao
     {
+        private readonly SqlUtils SqlUtils = new SqlUtils();
         public User GetUser(string userName)
         {
             string sql = " SELECT * " +
                          " FROM GOT_USER " +
                          " WHERE GOT_USER_USERNAME = " + "\"" + userName + "\"";
 
-            var trow = FetchDataRow(sql);
+            var trow = SqlUtils.FetchDataRow(sql);
 
             return trow == null ? null : FillUser(trow, true);
         }
@@ -29,7 +31,7 @@ namespace ManagementStore_DataAccess.Security
             var sql = "exec User_FetchFromSession "
                     + "@sessionId = " + "\"" + sessionId + "\"";
 
-            var trow = FetchDataRow(sql);
+            var trow = SqlUtils.FetchDataRow(sql);
 
             return trow == null ? null : FillUser(trow, false);
         }
@@ -37,7 +39,7 @@ namespace ManagementStore_DataAccess.Security
         public User GetSmartAgentUser()
         {
             var sql = "exec User_GetSmartAgentUser";
-            return FillUser(FetchDataRow(sql), false);
+            return FillUser(SqlUtils.FetchDataRow(sql), false);
         }
 
         internal User FillUser(DataRow trow, bool password)

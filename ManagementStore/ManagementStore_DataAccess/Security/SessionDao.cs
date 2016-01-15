@@ -1,4 +1,5 @@
-﻿using ManagementStore_DataModel.Security;
+﻿using ManagementStore_DataAccess.Utils;
+using ManagementStore_DataModel.Security;
 using System;
 using System.Data;
 
@@ -15,6 +16,7 @@ namespace ManagementStore_DataAccess.Security
 
     public class SessionDao : ISessionDao
     {
+        private readonly SqlUtils SqlUtils = new SqlUtils();
 
         public Session CreateSession(string userId)
         {
@@ -40,7 +42,7 @@ namespace ManagementStore_DataAccess.Security
             sql += " ) " +
                    "SELECT * FROM GOT_SESSION WHERE GOT_SESSION_ID = SCOPE_IDENTITY() ";
 
-            var trow = FetchDataRow(sql);
+            var trow = SqlUtils.FetchDataRow(sql);
 
             return FillSession(trow);
         }
@@ -51,7 +53,7 @@ namespace ManagementStore_DataAccess.Security
                       " SET GOT_SESSION_DATE_ENDED = GETDATE() " + Environment.NewLine +
                       " WHERE GOT_SESSION_GUID = " + "\"" + sessionId + "\"" + Environment.NewLine;
 
-            ExecuteDml(sql, 5);
+            SqlUtils.ExecuteDml(sql, 5);
         }
 
         public void IncreaseLoginFailure(string username)
@@ -60,7 +62,7 @@ namespace ManagementStore_DataAccess.Security
                       " SET GOT_USER_FAILED_LOGINATTEMPTS = isnull(GOT_USER_FAILED_LOGINATTEMPTS,0) + 1 " +
                       " WHERE GOT_USER_USERNAME = " + "\"" + username + "\"";
 
-            ExecuteDml(sql, 3);
+            SqlUtils.ExecuteDml(sql, 3);
         }
 
         public void ClearLoginFailure(string username)
@@ -69,7 +71,7 @@ namespace ManagementStore_DataAccess.Security
                       " SET GOT_USER_FAILED_LOGINATTEMPTS = 0  " +
                       " WHERE GOT_USER_USERNAME = " + "\"" + username + "\"";
 
-            ExecuteDml(sql, 3);
+            SqlUtils.ExecuteDml(sql, 3);
         }
 
         public bool IsSessionOk(string sessionId)
@@ -94,7 +96,7 @@ namespace ManagementStore_DataAccess.Security
                    " END " + Environment.NewLine +
                    " SELECT @gotSessionId AS THESESSION ";
 
-            var trow = FetchDataRow(sql, 5);
+            var trow = SqlUtils.FetchDataRow(sql);
 
             if (trow == null)
             {

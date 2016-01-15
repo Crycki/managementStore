@@ -45,6 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SessionDao.cs" />
     <Compile Include="Security\UserDao.cs" />
+    <Compile Include="Utils\SqlUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ManagementStore_DataModel\ManagementStore_DataModel.csproj">
@@ -52,6 +53,7 @@
       <Name>ManagementStore_DataModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
