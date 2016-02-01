@@ -16,4 +16,4 @@ namespace ManagementStore_REST.Security
         bool LogOut();
     }
 }
-}
+

@@ -22,3 +22,4 @@ namespace ManagementStore_DataAccess
         }
 
     }
+}

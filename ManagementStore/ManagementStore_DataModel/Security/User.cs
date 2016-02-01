@@ -27,5 +27,3 @@ namespace ManagementStore_DataModel.Security
         public string Email { get; set; }
     }
 }
-    }
-}
