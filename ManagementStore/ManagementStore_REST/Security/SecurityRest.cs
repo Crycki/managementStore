@@ -10,7 +10,7 @@ namespace ManagementStore_REST.Security
     {
         private readonly SecurityService _securityService = new SecurityService();
 
-        public Session Login(Credentials sessionCredential)
+        public User Login(Credentials sessionCredential)
         {
             try
             {
@@ -21,28 +21,6 @@ namespace ManagementStore_REST.Security
                 throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
             }
         }
-
-        public bool LogOut()
-        {
-            try
-            {
-                if (WebOperationContext.Current != null)
-                {
-                    var sessionId = GetSessionId();
-                    _securityService.LogOut(sessionId);
-                    return true;
-                }
-
-                return false;
-            }
-            catch (WebFaultException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
-            }
-        }
+       
     }
 }

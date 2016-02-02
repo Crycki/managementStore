@@ -9,11 +9,7 @@ namespace ManagementStore_REST.Security
     {
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/Session", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
-        Session Login(Credentials sessionCredential);
-
-        [OperationContract]
-        [WebInvoke(Method = "DELETE", UriTemplate = "/Session", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
-        bool LogOut();
+        User Login(Credentials sessionCredential);
     }
 }
 

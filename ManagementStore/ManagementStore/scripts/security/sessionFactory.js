@@ -12,10 +12,5 @@ angular.module('ManagmentStore').factory('SessionFactory', function ($resource) 
         return newSession.$save();
     };
 
-    sessionFactory.logout = function () {
-        var sessionToDelete = new Session();
-        sessionToDelete.$delete();
-    };
-
     return sessionFactory;
 });

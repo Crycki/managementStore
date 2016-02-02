@@ -6,11 +6,10 @@ namespace ManagementStore_DataAccess.Utils
 {
     public class SqlUtils
     {
-        private readonly SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["WebMenus"].ConnectionString);
         public DataRow FetchDataRow(string sql)
         {
             DataRow returnedValue;
-            using (var conn = sqlConnection)
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ManagmentStore"].ConnectionString))
             {
                 conn.Open();
                 using (var tran = conn.BeginTransaction())
@@ -33,7 +32,7 @@ namespace ManagementStore_DataAccess.Utils
 
         public void ExecuteDml(string sql, int Timeout)
         {
-            using (var conn = sqlConnection)
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ManagmentStore"].ConnectionString))
             {
                 conn.Open();
                 using (var tran = conn.BeginTransaction())

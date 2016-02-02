@@ -9,48 +9,21 @@ namespace ManagementStore_DomainLogic
 {
     public class SecurityService
     {
-        private readonly ISessionDao _sessionDao = DaoFactory.SessionDao;
         private readonly IUserDao _userDao = DaoFactory.UserDao;
 
-        public bool ValidateSession(string sessionid)
-        {
-            //Are we getting it from the minute cache?
-            string rtn = (string)GetShortCache().GetValue("session_NOW" + DateTime.Now.ToString("yyyyMMddHHmm"), sessionid);
-            if (rtn == null) rtn = string.Empty;
-
-            //IF yes return true
-            if (rtn == sessionid)
-            {
-                return true;
-            }
-
-            if (_sessionDao.IsSessionOk(sessionid))
-            {
-                //Store it in the cache.. lasting one minute..
-                GetShortCache().SetValue("session_NOW" + DateTime.Now.ToString("yyyyMMddHHmm"), sessionid, sessionid);
-                return true;
-            }
-
-            return false;
-
-        }
 
         public User GetUser(string sessionid)
         {
-            if (ValidateSession(sessionid))
+            var user = (User)GetShortCache().GetValue("session", sessionid);
+            if (user == null)
             {
-                var user = (User)GetShortCache().GetValue("session", sessionid);
-                if (user == null)
-                {
-                    user = _userDao.GetUserFromSession(sessionid);
-                    GetShortCache().SetValue("session", sessionid, user);
-                }
-                return user;
+                user = _userDao.GetUserFromSession(sessionid);
+                GetShortCache().SetValue("session", sessionid, user);
             }
-            return null;
+            return user;
         }
 
-        public Session Login(Credentials sessionCredential)
+        public User Login(Credentials sessionCredential)
         {
             var existingUser = _userDao.GetUser(sessionCredential.UserName);
 
@@ -59,31 +32,7 @@ namespace ManagementStore_DomainLogic
                 throw new SecurityException("User doesn't exist!");
             }
 
-            if (existingUser.LoginAttempts >= 5)
-            {
-                throw new SecurityException("Maximum login attempt reached!");
-            }
-
-            Session session;
-
-            if (sessionCredential.Password == existingUser.Password)
-            {
-                _sessionDao.ClearLoginFailure(existingUser.UserName);
-                session = _sessionDao.CreateSession(existingUser.Id);
-            }
-            else
-            {
-                _sessionDao.IncreaseLoginFailure(existingUser.UserName);
-                throw new SecurityException("Incorrect password!");
-            }
-
-            return session;
-        }
-
-        public bool LogOut(string sessionId)
-        {
-            _sessionDao.DestroySession(sessionId);
-            return true;
+            return existingUser;
         }
 
         private static FastCache _mcache;

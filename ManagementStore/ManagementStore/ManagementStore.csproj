@@ -126,6 +126,7 @@
     <Content Include="lib\angular-route.min.js" />
     <Content Include="lib\angular.min.js" />
     <Content Include="lib\ui-bootstrap-tpls-0.13.3.min.js" />
+    <Content Include="REST\Security.svc" />
     <Content Include="scripts\security\loginPartial.html" />
     <Content Include="scripts\security\sessionController.js" />
     <Content Include="scripts\security\sessionFactory.js" />
