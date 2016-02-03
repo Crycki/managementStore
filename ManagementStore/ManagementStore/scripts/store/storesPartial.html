@@ -5,9 +5,8 @@
     <div class="panel-body" style="padding: 10px">
         <form class="form-inline" role="form" style="padding:0px">
             <div class="form-group col-md-4">
-                <label for="invoiceNumber">Cautare</label>
                 <p class="input-group col-md-12">
-                    <input id="invoiceNumber" type="text" data-ng-model="search" class="form-control" />
+                    <input type="text" data-ng-model="search" class="form-control" />
                 </p>
             </div>
         </form>
@@ -16,7 +15,7 @@
 
 <div class="panel panel-default no-margin">
     <div class="panel-heading" style="padding: 10px">
-        <strong><span class="glyphicon glyphicon-th"></span> Magazine</strong> <button class="btn btn-info pull-right" style="margin-top:-7px" data-ng-click="selectStore()">Adauga Magazin</button>
+        <strong><span class="glyphicon glyphicon-th"></span> Store</strong> <button class="btn btn-info pull-right" style="margin-top:-7px" data-ng-click="selectStore()">Add Store</button>
     </div>
     <div class="panel-body" style="padding: 10px;">
         <div class="panel-body" style="padding: 10px">
@@ -44,17 +43,17 @@
 
 <div class="panel panel-default no-margin" data-ng-show="selectedStore">
     <div class="panel-heading" style="padding: 10px">
-        <strong><span class="glyphicon glyphicon-ban-circle"></span> Magazin</strong>
+        <strong><span class="glyphicon glyphicon-ban-circle"></span> Store</strong>
     </div>
     <div class="panel-body" style="padding: 10px;">
         <div class="panel-body" style="padding: 10px">
             <div class="row">
-                <div class="col-md-3">Nume: </div>
+                <div class="col-md-3">Name: </div>
                 <div class="col-md-5"><input type="text" class="form-control" ng-model="selectedStore.Name" /></div>
             </div>
             <div class="row">
                 <div class="col-md-1 col-md-offset-11">
-                    <button class="btn btn-info pull-right" data-ng-click="saveStore()">Salveaza</button>
+                    <button class="btn btn-info pull-right" data-ng-click="saveStore()">{{(selectedStore.id)? 'Save' :'Update'}}</button>
                 </div>
             </div>
         </div>

@@ -8,7 +8,8 @@ app.config(function ($routeSegmentProvider, $httpProvider) {
 
         when('/login', 'login').
         when('/', 'login').
-        when('/components/store', 'components.store')
+        when('/components/stores', 'components.stores').
+        when('/components/products', 'components.products')
 
     .segment('login', {
         templateUrl: 'Scripts/security/loginPartial.html',
@@ -18,11 +19,14 @@ app.config(function ($routeSegmentProvider, $httpProvider) {
         templateUrl: 'Scripts/menu/menuPartial.html'
     })
     .within()
-        .segment('store', {
-            templateUrl: 'Scripts/store/storePartial.html',
-            controller: 'StoreController'
-        });
-
+        .segment('stores', {
+            templateUrl: 'Scripts/store/storesPartial.html',
+            controller: 'StoresController'
+        })
+        .segment('products', {
+            templateUrl: 'Scripts/product/productsPartial.html',
+            controller: 'ProductsController'
+        })
 
     $httpProvider.interceptors.push(function ($q, $location) {
         return {

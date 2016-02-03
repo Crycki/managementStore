@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('ManagmentStore').controller('StoreController', function ($scope, $location, StoreFactory) {
+angular.module('ManagmentStore').controller('StoresController', function ($scope, $location, StoreFactory) {
     $scope.stores = StoreFactory.getStores();
     $scope.selectStore = function (store) {
         $scope.selectedStore = (store) ? angular.copy(store) : {};

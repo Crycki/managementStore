@@ -6,7 +6,7 @@ angular.module('ManagmentStore').factory('ProductFactory', function ($resource) 
     var Products = $resource('REST/Product.svc/Products');
 
     productFactory.getProducts = function () {
-        return null;
+        return Products.query();
     };
 
     return productFactory;
