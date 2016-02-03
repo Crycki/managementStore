@@ -1,4 +1,5 @@
 ﻿
+using ManagementStore_DataAccess.Product;
 using ManagementStore_DataAccess.Security;
 using ManagementStore_DataAccess.Store;
 
@@ -19,6 +20,13 @@ namespace ManagementStore_DataAccess
         {
             get { return _storeDao ?? (_storeDao = new StoreDao()); }
             set { _storeDao = value; }
+        }
+
+        private static IProductDao _productDao;
+        public static IProductDao ProductDao
+        {
+            get { return _productDao ?? (_productDao = new ProductDao()); }
+            set { _productDao = value; }
         }
     }
 }

@@ -129,6 +129,7 @@
     <Content Include="lib\angular-route.min.js" />
     <Content Include="lib\angular.min.js" />
     <Content Include="lib\ui-bootstrap-tpls-0.13.3.min.js" />
+    <Content Include="REST\Product.svc" />
     <Content Include="REST\Store.svc" />
     <Content Include="REST\Security.svc" />
     <Content Include="scripts\menu\menuDirective.js" />
