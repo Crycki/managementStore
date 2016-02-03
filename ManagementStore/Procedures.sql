@@ -61,3 +61,21 @@ BEGIN
 	WHERE Id_Magazin = @storeId
 END
 GO
+
+------------------------------------------------------------------------------------
+---									PRODUCTS									 ---
+------------------------------------------------------------------------------------
+
+IF EXISTS ( SELECT  *
+            FROM    sys.objects
+            WHERE   object_id = OBJECT_ID(N'[dbo].[Product_GetProducts]')) 
+DROP PROCEDURE [dbo].[Product_GetProducts]
+GO
+
+CREATE PROCEDURE [dbo].[Product_GetProducts]
+AS
+BEGIN
+	SELECT *
+	FROM PRODUSE
+END
+GO

@@ -12,3 +12,31 @@
         </form>
     </div>
 </div>
+
+<div class="panel panel-default no-margin">
+    <div class="panel-heading" style="padding: 10px">
+        <strong><span class="glyphicon glyphicon-th"></span> Products</strong> <button class="btn btn-info pull-right" style="margin-top:-7px" data-ng-click="selectProduct()">Add Product</button>
+    </div>
+    <div class="panel-body" style="padding: 10px;">
+        <div class="panel-body" style="padding: 10px">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="product in products | filter:search">
+                        <td>{{product.Id}}</td>
+                        <td>{{product.Name}}</td>
+                        <td><i style="cursor:pointer" class="fa fa-edit fa-2x color-info" data-ng-click="selectProduct(product)"></i></td>
+                        <td><i style="cursor:pointer" class="fa fa-trash fa-2x color-info" data-ng-click="removeProduct(product)"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
