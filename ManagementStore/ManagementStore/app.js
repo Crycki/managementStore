@@ -8,11 +8,20 @@ app.config(function ($routeSegmentProvider, $httpProvider) {
 
         when('/login', 'login').
         when('/', 'login').
+        when('/components/store', 'components.store')
 
-    segment('login', {
+    .segment('login', {
         templateUrl: 'Scripts/security/loginPartial.html',
         controller: 'SessionController'
-    });
+    })
+    .segment('components', {
+        templateUrl: 'Scripts/menu/menuPartial.html'
+    })
+    .within()
+        .segment('store', {
+            templateUrl: 'Scripts/store/storePartial.html',
+            controller: 'StoreController'
+        });
 
 
     $httpProvider.interceptors.push(function ($q, $location) {
@@ -25,10 +34,10 @@ app.config(function ($routeSegmentProvider, $httpProvider) {
                 return $q.reject(rejection);
             },
 
-            'response': function (response) {              
+            'response': function (response) {
                 if (typeof response.data == "string" && response.data != "true" && response.data != "false"
                     && response.data.trim().indexOf("<") !== 0 && response.data !== "") {
-                    var message = response.data.replace(/['"]+/g, '');                   
+                    var message = response.data.replace(/['"]+/g, '');
                 }
                 return response || $q.when(response);
             }

@@ -47,6 +47,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\ISecurityRest.cs" />
     <Compile Include="Security\SecurityRest.cs" />
+    <Compile Include="Store\IStoreRest.cs" />
+    <Compile Include="Store\StoreRest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ManagementStore_DataModel\ManagementStore_DataModel.csproj">

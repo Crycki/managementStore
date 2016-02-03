@@ -21,7 +21,9 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/font-awesome.css">
     <link href="css/appStyle.css" rel="stylesheet" />
-
+    <link href="css/template.css" rel="stylesheet" />
+    <link href="css/hover-min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
     <base href="/">
 </head>
 <body data-ng-cloak>
@@ -29,11 +31,15 @@
 
     <script src="app.js"></script>
     <!--Directives-->
+    <script src="scripts/menu/menuDirective.js"></script>
     <!--Services-->
     <!--Factories-->
     <script src="scripts/security/sessionFactory.js"></script>
+    <script src="scripts/store/storeFactory.js"></script>
 
     <!--Controllers-->
     <script src="scripts/security/sessionController.js"></script>
+    <script src="scripts/store/storeController.js"></script>
+
 </body>
 </html>

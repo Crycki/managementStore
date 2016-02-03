@@ -95,6 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\appStyle.css" />
+    <Content Include="css\hover-min.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\template.css" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -126,10 +129,16 @@
     <Content Include="lib\angular-route.min.js" />
     <Content Include="lib\angular.min.js" />
     <Content Include="lib\ui-bootstrap-tpls-0.13.3.min.js" />
+    <Content Include="REST\Store.svc" />
     <Content Include="REST\Security.svc" />
+    <Content Include="scripts\menu\menuDirective.js" />
+    <Content Include="scripts\menu\menuPartial.html" />
     <Content Include="scripts\security\loginPartial.html" />
     <Content Include="scripts\security\sessionController.js" />
     <Content Include="scripts\security\sessionFactory.js" />
+    <Content Include="scripts\store\storeController.js" />
+    <Content Include="scripts\store\storeFactory.js" />
+    <Content Include="scripts\store\storePartial.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

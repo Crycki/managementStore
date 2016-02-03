@@ -6,6 +6,30 @@ namespace ManagementStore_DataAccess.Utils
 {
     public class SqlUtils
     {
+        public DataTable FetchDataTable(string sql)
+        {
+            DataTable returnedValue;
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ManagmentStore"].ConnectionString))
+            {
+                conn.Open();
+                using (var tran = conn.BeginTransaction())
+                {
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.Transaction = tran;
+                        cmd.CommandText = sql;
+                        cmd.CommandTimeout = 5;
+                        DataTable dt = new DataTable();
+                        dt.Load(cmd.ExecuteReader());
+                        returnedValue = dt;
+                    }
+                    tran.Commit();
+                    conn.Close();
+                }
+            }
+            return returnedValue;
+        }
+
         public DataRow FetchDataRow(string sql)
         {
             DataRow returnedValue;

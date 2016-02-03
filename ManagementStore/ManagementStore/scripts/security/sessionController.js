@@ -4,7 +4,7 @@ angular.module('ManagmentStore').controller('SessionController', function ($scop
 
     $scope.login = function () {
         SessionFactory.login($scope.username, $scope.password).then(function (session) {
-            $location.path("/home");
+            $location.path("/components/store");
         });
     };
 

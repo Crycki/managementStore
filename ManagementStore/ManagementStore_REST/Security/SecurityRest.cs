@@ -20,7 +20,6 @@ namespace ManagementStore_REST.Security
             {
                 throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
             }
-        }
-       
+        }      
     }
 }
