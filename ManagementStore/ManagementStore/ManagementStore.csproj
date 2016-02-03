@@ -133,6 +133,9 @@
     <Content Include="REST\Security.svc" />
     <Content Include="scripts\menu\menuDirective.js" />
     <Content Include="scripts\menu\menuPartial.html" />
+    <Content Include="scripts\products\productsController.js" />
+    <Content Include="scripts\products\productsFactory.js" />
+    <Content Include="scripts\products\productsPartial.html" />
     <Content Include="scripts\security\loginPartial.html" />
     <Content Include="scripts\security\sessionController.js" />
     <Content Include="scripts\security\sessionFactory.js" />

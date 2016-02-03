@@ -22,5 +22,40 @@ namespace ManagementStore_REST.Store
                 throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
             }
         }
+        public string SaveStore(StoreObject store)
+        {
+            try
+            {
+                return _storeService.SaveStore(store);
+            }
+            catch (Exception ex)
+            {
+                throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        public string UpdateStore(string storeId, StoreObject store)
+        {
+            try
+            {
+                return _storeService.SaveStore(store);
+            }
+            catch (Exception ex)
+            {
+                throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        public string DeleteStore(string storeId)
+        {
+            try
+            {
+                return _storeService.DeleteStore(storeId);
+            }
+            catch (Exception ex)
+            {
+                throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
+            }
+        }
     }
 }

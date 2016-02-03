@@ -1,6 +1,7 @@
 ﻿
 using ManagementStore_DataAccess.Utils;
 using ManagementStore_DataModel.Store;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -9,6 +10,8 @@ namespace ManagementStore_DataAccess.Store
     public interface IStoreDao
     {
         List<StoreObject> GetStores();
+        void SaveStore(StoreObject store);
+        void DeleteStore(string storeId);
     }
 
     public class StoreDao : IStoreDao
@@ -26,6 +29,18 @@ namespace ManagementStore_DataAccess.Store
                 stores.Add(FillStore(trow));
             }
             return stores;
+        }
+
+        public void SaveStore(StoreObject store)
+        {
+            var sql = "exec Store_SaveStore " + ((String.IsNullOrEmpty(store.Id)) ? "NULL" : store.Id) + " , '" + store.Name + "'";
+            SqlUtils.ExecuteDml(sql, 5);
+        }
+
+        public void DeleteStore(string storeId)
+        {
+            var sql = "exec Store_DeleteStore " + storeId;
+            SqlUtils.ExecuteDml(sql, 5);
         }
 
         private StoreObject FillStore(DataRow trow)

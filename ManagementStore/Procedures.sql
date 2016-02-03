@@ -18,3 +18,46 @@ BEGIN
 	FROM MAGAZINE
 END
 GO
+
+
+IF EXISTS ( SELECT  *
+            FROM    sys.objects
+            WHERE   object_id = OBJECT_ID(N'[dbo].[Store_SaveStore]')) 
+DROP PROCEDURE [dbo].[Store_SaveStore]
+GO
+
+CREATE PROCEDURE [dbo].[Store_SaveStore](@storeId as int, @storeName as nvarchar(255) )
+AS
+BEGIN
+	IF @storeId is NULL 
+		BEGIN
+			INSERT INTO MAGAZINE 
+			(
+			Nume_Magazin
+			)VALUES(
+			@storeName
+			)
+		END
+	ELSE
+	 BEGIN
+		UPDATE MAGAZINE 
+		SET Nume_Magazin = @storeName
+		WHERE Id_Magazin = @storeId
+	 END
+END
+GO
+
+IF EXISTS ( SELECT  *
+            FROM    sys.objects
+            WHERE   object_id = OBJECT_ID(N'[dbo].[Store_DeleteStore]')) 
+DROP PROCEDURE [dbo].[Store_DeleteStore]
+GO
+
+
+CREATE PROCEDURE [dbo].[Store_DeleteStore](@storeId as int)
+AS
+BEGIN
+	DELETE FROM MAGAZINE
+	WHERE Id_Magazin = @storeId
+END
+GO

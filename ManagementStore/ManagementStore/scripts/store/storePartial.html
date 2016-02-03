@@ -1,17 +1,62 @@
-﻿<div class="container" style="margin-top:10px">
-    <table class="table table-hover fixed-table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-ng-repeat="store in stores" data-ng-click="selectStore(store)" data-ng-class="{'selected': store.Id === selectedStore.Id}">
-                <td>{{store.Id}}</td>                
-                <td>{{store.Name}}</td>
-            </tr>
-        </tbody>
-    </table>
-     
+﻿<div class="panel panel-default no-margin">
+    <div class="panel-heading" style="padding: 10px">
+        <strong><span class="glyphicon glyphicon-search"></span> Search</strong>
+    </div>
+    <div class="panel-body" style="padding: 10px">
+        <form class="form-inline" role="form" style="padding:0px">
+            <div class="form-group col-md-4">
+                <label for="invoiceNumber">Cautare</label>
+                <p class="input-group col-md-12">
+                    <input id="invoiceNumber" type="text" data-ng-model="search" class="form-control" />
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default no-margin">
+    <div class="panel-heading" style="padding: 10px">
+        <strong><span class="glyphicon glyphicon-th"></span> Magazine</strong> <button class="btn btn-info pull-right" style="margin-top:-7px" data-ng-click="selectStore()">Adauga Magazin</button>
+    </div>
+    <div class="panel-body" style="padding: 10px;">
+        <div class="panel-body" style="padding: 10px">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="store in stores | filter:search">
+                        <td>{{store.Id}}</td>
+                        <td>{{store.Name}}</td>
+                        <td><i style="cursor:pointer" class="fa fa-edit fa-2x color-info" data-ng-click="selectStore(store)"></i></td>
+                        <td><i style="cursor:pointer" class="fa fa-trash fa-2x color-info" data-ng-click="removeStore(store)"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default no-margin" data-ng-show="selectedStore">
+    <div class="panel-heading" style="padding: 10px">
+        <strong><span class="glyphicon glyphicon-ban-circle"></span> Magazin</strong>
+    </div>
+    <div class="panel-body" style="padding: 10px;">
+        <div class="panel-body" style="padding: 10px">
+            <div class="row">
+                <div class="col-md-3">Nume: </div>
+                <div class="col-md-5"><input type="text" class="form-control" ng-model="selectedStore.Name" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1 col-md-offset-11">
+                    <button class="btn btn-info pull-right" data-ng-click="saveStore()">Salveaza</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -13,8 +13,18 @@ namespace ManagementStore_DomainLogic.Store
         public List<StoreObject> GetStores()
         {
             return _storeDao.GetStores();
-
         }
 
+        public string SaveStore(StoreObject store)
+        {
+            _storeDao.SaveStore(store);
+            return "Magazinul a fost salvat";
+        }
+
+        public string DeleteStore(string storeId)
+        {
+            _storeDao.DeleteStore(storeId);
+            return "Magazinul a fost sters";
+        }
     }
 }
