@@ -15,7 +15,7 @@
 
 <div class="panel panel-default no-margin">
     <div class="panel-heading" style="padding: 10px">
-        <strong><span class="glyphicon glyphicon-th"></span> Products</strong> <button class="btn btn-info pull-right" style="margin-top:-7px" data-ng-click="selectProduct()">Add Product</button>
+        <strong><span class="glyphicon glyphicon-th"></span> Products</strong> <!--<button class="btn btn-info pull-right" style="margin-top:-7px" data-ng-click="selectProduct()">Add Product</button>-->
     </div>
     <div class="panel-body" style="padding: 10px;">
         <div class="panel-body" style="padding: 10px">
@@ -24,7 +24,16 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Edit</th>
+                        <th>Amount</th>
+                        <!--<th>ExpirationDate</th>-->
+                        <th>TVA</th>
+                        <th>Unit</th>
+                        <th>Price</th>
+                        <th>CurrencyProduct</th>
+                        <th>Producer</th>
+                        <th>Type</th>
+                        <th>Discount</th>
+                        <th>BarCode</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -32,7 +41,16 @@
                     <tr data-ng-repeat="product in products | filter:search">
                         <td>{{product.Id}}</td>
                         <td>{{product.Name}}</td>
-                        <td><i style="cursor:pointer" class="fa fa-edit fa-2x color-info" data-ng-click="selectProduct(product)"></i></td>
+                        <td>{{product.Amount.Total}}</td>
+                        <!--<td>{{product.ExpirationDate.Date | date: yyyy-MM-dd}}</td>-->
+                        <td>{{product.TVA.Percent}}</td>
+                        <td>{{product.Unit.Name}}</td>
+                        <td>{{product.Price.CrudPrice}}</td>
+                        <td>{{product.CurrencyProduct.Name}}</td>
+                        <td>{{product.Producer.Name}}</td>
+                        <td>{{product.ProductType.Name}}</td>
+                        <td>{{product.Discount.Percent}}</td>
+                        <td>{{product.BarCode.NumberCode}}</td>
                         <td><i style="cursor:pointer" class="fa fa-trash fa-2x color-info" data-ng-click="removeProduct(product)"></i></td>
                     </tr>
                 </tbody>

@@ -12,5 +12,9 @@ namespace ManagementStore_REST.Product
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/Products", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         List<ProductObject> GetProducts();
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", UriTemplate = "/Product/{productId}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        string DeleteProduct(string productId);
     }
 }

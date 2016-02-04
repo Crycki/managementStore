@@ -135,7 +135,7 @@
     <Content Include="scripts\menu\menuDirective.js" />
     <Content Include="scripts\menu\menuPartial.html" />
     <Content Include="scripts\product\productsController.js" />
-    <Content Include="scripts\product\productsFactory.js" />
+    <Content Include="scripts\product\productFactory.js" />
     <Content Include="scripts\product\productsPartial.html" />
     <Content Include="scripts\security\loginPartial.html" />
     <Content Include="scripts\security\sessionController.js" />

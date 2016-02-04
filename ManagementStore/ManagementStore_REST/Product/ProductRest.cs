@@ -23,5 +23,17 @@ namespace ManagementStore_REST.Product
                 throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
             }
         }
+
+        public string DeleteProduct(string productId)
+        {
+            try
+            {
+                return _productService.DeleteProduct(productId);
+            }
+            catch (Exception ex)
+            {
+                throw new WebFaultException<string>(ex.Message, HttpStatusCode.InternalServerError);
+            }
+        }
     }
 }

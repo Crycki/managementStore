@@ -42,7 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
+    <Compile Include="Product\Amount.cs" />
+    <Compile Include="Product\BarCode.cs" />
+    <Compile Include="Product\CurrencyProduct.cs" />
+    <Compile Include="Product\Discount.cs" />
+    <Compile Include="Product\ExpirationDate.cs" />
+    <Compile Include="Product\Price.cs" />
+    <Compile Include="Product\Producer.cs" />
     <Compile Include="Product\ProductObject.cs" />
+    <Compile Include="Product\ProductType.cs" />
+    <Compile Include="Product\TVA.cs" />
+    <Compile Include="Product\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Credentials.cs" />
     <Compile Include="Security\Session.cs" />

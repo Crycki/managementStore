@@ -13,5 +13,11 @@ namespace ManagementStore_DomainLogic.Product
         {
             return _productDao.GetProducts();
         }
+
+        public string DeleteProduct(string productId)
+        {
+            _productDao.DeleteProduct(productId);
+            return "Produsul a fost sters";
+        }
     }
 }
