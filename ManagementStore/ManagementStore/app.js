@@ -5,7 +5,6 @@ var app = angular.module('ManagmentStore', ['ngRoute', 'route-segment', 'view-se
 app.config(function ($routeSegmentProvider, $httpProvider) {
 
     $routeSegmentProvider.
-
         when('/login', 'login').
         when('/', 'login').
         when('/components/stores', 'components.stores').
