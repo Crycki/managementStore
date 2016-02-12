@@ -12,13 +12,13 @@ app.config(function ($routeSegmentProvider, $httpProvider) {
 
     .segment('login', {
         templateUrl: 'Scripts/security/loginPartial.html',
-        controller: 'SessionController'
+        controller:  'SessionController'
     })
     .segment('components', {
         templateUrl: 'Scripts/menu/menuPartial.html'
     })
     .within()
-        .segment('stores', {
+        .segment('stores', { 
             templateUrl: 'Scripts/store/storesPartial.html',
             controller: 'StoresController'
         })
